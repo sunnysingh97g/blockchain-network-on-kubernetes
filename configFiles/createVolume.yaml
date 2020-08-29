@@ -12,7 +12,8 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/tmp"
+    path: "/sharedvolume"
+
 
 ---
 kind: PersistentVolumeClaim

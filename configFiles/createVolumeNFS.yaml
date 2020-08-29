@@ -1,0 +1,35 @@
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: shared-pv
+  labels:
+    type: local
+    name: sharedvolume
+spec:
+  capacity:
+    storage: 20Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    path: /SL02SEV2127646_1/data01
+    server: fsf-dal1201e-fz.adn.networklayer.com
+    readOnly: false
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: shared-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  storageClassName: ""
+  selector:
+    matchLabels:
+      name: sharedvolume
