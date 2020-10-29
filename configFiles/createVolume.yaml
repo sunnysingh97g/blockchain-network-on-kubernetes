@@ -12,8 +12,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/sharedvolume"
-
+    path: "/exports/k8s-hlf-shared"
 
 ---
 kind: PersistentVolumeClaim

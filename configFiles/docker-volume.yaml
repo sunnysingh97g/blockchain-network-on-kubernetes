@@ -12,7 +12,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/tmp-docker-pv"
+    path: "/exports/data_ibmhlf14k8s/docker"
 
 ---
 kind: PersistentVolumeClaim
