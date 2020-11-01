@@ -17,7 +17,7 @@ spec:
 
       containers:
       - name: chaincodeinstantiate
-        image: hyperledger/fabric-tools:1.4
+        image: docker-registry-public:5001/hyperledger/fabric-tools:1.4
         imagePullPolicy: Always
         command: ["sh", "-c", "peer chaincode instantiate -o blockchain-orderer:31010 -C ${CHANNEL_NAME} -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -c '{\"Args\":[\"init\",\"a\",\"100\",\"b\",\"200\"]}'"]
         env:
@@ -37,6 +37,10 @@ spec:
           value: blockchain-org1peer1:30110
         - name: GODEBUG
           value: "netdns=go"
+        - name: CORE_CHAINCODE_BUILDER
+          value: docker-registry-public:5001/hypereledger/fabric-ccenv:1.4
+        - name: CORE_CHAINCODE_GOLANG_RUNTIME
+          value: docker-registry-public:5001/hypereledger/fabric-ccenv:1.4
         volumeMounts:
         - mountPath: /shared
           name: sharedvolume

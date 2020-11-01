@@ -16,7 +16,7 @@ spec:
           claimName: shared-pvc
       containers:
       - name: createchanneltx
-        image: hyperledger/fabric-tools:1.4
+        image: docker-registry-public:5001/hyperledger/fabric-tools:1.4
         imagePullPolicy: Always
         command: ["sh", "-c", "cd /shared && pwd && ls && export FABRIC_CFG_PATH=$PWD && configtxgen -profile FourOrgsChannel -outputCreateChannelTx ${CHANNEL_NAME}.tx -channelID ${CHANNEL_NAME} && touch /shared/status_channeltx_complete "]
         env:
